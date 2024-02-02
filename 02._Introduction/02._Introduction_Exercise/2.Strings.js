@@ -7,9 +7,9 @@ const numberTwo = "2.30";
 // add those two numbers and show the result
 // you cannot touch line 1 neither line 2
 
-const totalFloatNumber = parseFloat(numberOne) + parseFloat(numberTwo);
+const sum = parseFloat(numberOne) + parseFloat(numberTwo);
 
-console.log(totalFloatNumber);
+console.log(sum);
 
 // --------------------------------------
 
@@ -49,12 +49,13 @@ console.log(averageWithDecimals);
 const letters = "abc";
 // Get me the character "c"
 
-const character = letters.charAt(3); 
+// square bracket notation
+// const characterC = letters[2];
+// const characterC = letters.charAt(2);
+// const characterC = letters.substring(2, 3);
+// const characterC = letters.slice(2, 3)
 
-console.log(character);
-
-
-
+console.log(characterC);
 
 // --------------------------------------
 // Exercise 7 - Replace
@@ -63,6 +64,9 @@ const fact = "You are learning javascript!";
 
 // capitalize the J in Javascript
 
+const newFact = fact.replace("j", "J");
+
+console.log(newFact);
 
 // --------------------------------------
 

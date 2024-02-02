@@ -39,3 +39,8 @@ const stringTwo = 'This is one """" way """ of defining strings';
 const stringThree = `This """" '''' is one way of defining strings
 multi line string
 and here`;
+
+const kea = {
+    address: "Guldbergsgade",
+    studentsInBuilding: 204
+};
