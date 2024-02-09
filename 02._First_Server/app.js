@@ -6,25 +6,25 @@ const app = require("express")();
 
 
   // route
-          // endpoint
-            // callback function
-            // request, response
+      // endpoint
+      // callback function
+      // request, response
 app.get("/", (req, res) => {
   res.send({ data: "welcome" });
 });
 
 // route
 app.get("/secondRoute", (req, res) => {
-    res.send({ data: [1, 2, 3, 4] });
+  res.send({ data: [1, 2, 3, 4] });
 });
 
 // assignment create a third route with the endpoint thirdRoute
 app.get("/thirdRoute/:someValue/:someOtherValue", (req, res) => {
-    const firstValue = req.params.someValue;
-    const secondValue = req.params.someOtherValue;
-    console.log(firstValue, secondValue);
-    console.log(req.params);
-    res.send({ data: "You reached the third route" });
+  const firstValue = req.params.someValue;
+  const secondValue = req.params.someOtherValue;
+  console.log(firstValue, secondValue);
+  console.log(req.params);
+  res.send({ data: "You reached the third route" });
 });
 
 
@@ -44,11 +44,11 @@ app.get("/wallet/:withdrawalAmount", (req, res) => {
    if (!withdrawalAmount) res.send({ data: "You have submitted an incorrect amount"});
    
    if (balance - withdrawalAmount < 0) {
-    res.send({ data: "Sorry, not enough funds." });
+  res.send({ data: "Sorry, not enough funds." });
    } else {
-    balance -= withdrawalAmount;
+  balance -= withdrawalAmount;
 
-    res.send({ data: `Your new balance is ${balance}` });
+  res.send({ data: `Your new balance is ${balance}` });
    }
 
 });
@@ -63,7 +63,7 @@ app.get("/wallet/:withdrawalAmount", )
 
 
 app.get("/page", (req, res) => {
-    res.send("<h1>Welcome to my page</h1>");
+  res.send("<h1>Welcome to my page</h1>");
 });
 
 // http: 80

@@ -2,24 +2,24 @@
 // getRandomInt();
 
 function getRandomInt(min, max) {
-    Math.floor(Math.random() * (max + 1 - min) + min);
+  Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
 const getRandomIntAnonymousFunction = function (min, max) {
-    return Math.floor(Math.random() * (max + 1 - min) + min);
+  return Math.floor(Math.random() * (max + 1 - min) + min);
 };
 
 const getRandomIntArrowFunction = (min, max) => {
-    return Math.floor(Math.random() * (max + 1 - min) + min);
+  return Math.floor(Math.random() * (max + 1 - min) + min);
 };
 
 // task write the above arrow function as a one-liner
 const getRandomIntArrowFunctionOneLiner = 
-    (min, max) => Math.floor(Math.random() * (max + 1 - min) + min);
+  (min, max) => Math.floor(Math.random() * (max + 1 - min) + min);
 
-                            // string // callback function
+                  // string // callback function
 function genericActionPerformer(name, genericAction) {
-    return genericAction(name);
+  return genericAction(name);
 }
 
 const running = (name) => `${name} is running`;
