@@ -1,12 +1,12 @@
  ______________                __________________           ___________________________________________
 | HTTP methods |              | endpoints:       |         | usage:                                    |
 |              |              |                  |         |                                           |
-| GET          |              | /aimodels        |         | get all aimodels                          |
-| GET          |              | /aimodels/{id}   |         | get an aimodel by {id}                    |
-| POST         |              | /aimodels        |         | create a new aimodel                      |
-| PUT          |              | /aimodels/{id}   |         | update the entire aimodel resource        |
-| PATCH        |              | /aimodels/{id}   |         | update parts of the aimodel resource      |
-| DELETE       |              | /aimodels/{id}   |         | delete an aimodel resource by id          |
+| GET          |              | /drinks          |         | get all drinks                            |
+| GET          |              | /drinks/:id      |         | get a drink by :id                        |
+| POST         |              | /drinks          |         | create a new drink                        |
+| PUT          |              | /drinks/:id      |         | update the entire drink resource          |
+| PATCH        |              | /drinks/:id      |         | update parts of the drink resource        |
+| DELETE       |              | /drinks/:id      |         | delete a drink resource by id             |
 |______________|              |__________________|         |___________________________________________|
 
 
