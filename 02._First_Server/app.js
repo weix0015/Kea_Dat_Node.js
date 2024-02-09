@@ -39,26 +39,32 @@ let balance = 100;
 
 app.get("/wallet/:withdrawalAmount", (req, res) => {
 
-   const withdrawalAmount = Number(req.params.withdrawalAmount);
+  const withdrawalAmount = Number(req.params.withdrawalAmount);
    
-   if (!withdrawalAmount) res.send({ data: "You have submitted an incorrect amount"});
+  if (!withdrawalAmount) res.send({ data: "You have submitted an incorrect amount"});
    
-   if (balance - withdrawalAmount < 0) {
-  res.send({ data: "Sorry, not enough funds." });
-   } else {
-  balance -= withdrawalAmount;
+  if (balance - withdrawalAmount < 0) {
+    res.send({ data: "Sorry, not enough funds." });
+  } else {
+    balance -= withdrawalAmount;
 
-  res.send({ data: `Your new balance is ${balance}` });
-   }
+    res.send({ data: `Your new balance is ${balance}` });
+  }
 
 });
 
 // task: create a route called fillUpWallet that 
 // task: allows a client to fill up the wallet with a specific amount
 
-let balanceAmount = 100;
+app.get("/fillUpWallet/:depositAmount", (req, res) => {
+  const depositAmount = Number(req.params.depositAmount);
 
-app.get("/wallet/:withdrawalAmount", )
+  if (!depositAmount) res.send({ data: "You have submitted an incorrect amount" });
+  else {
+    balance += depositAmount;
+    res.send({ data: `Your new balance is ${balance}` });
+  }
+});
 
 
 
