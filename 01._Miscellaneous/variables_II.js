@@ -3,7 +3,7 @@
 // totalGlobalVariable = "Never EVER!!! do this!!!";
 var globalVariable = "Also NEVER ever do this!!!";
 
-// use cconst whenever possible, else use let
+// use const whenever possible, else use let
 
 // about const:
 // const cannot be undeclared or redeclared

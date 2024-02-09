@@ -32,5 +32,3 @@ const runningResult = genericActionPerformer(running, "Alex");
 
 // assignment create a single line below that print "Louis is eating"
 console.log(genericActionPerformer("Louis", (name) => `${name} is eating`));
-
-
