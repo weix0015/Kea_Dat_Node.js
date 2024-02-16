@@ -23,3 +23,10 @@ app.get("/drinks/:id", (req, res) => {
 });
 
 app.listen(8080);
+
+// undefined, null, false, 0, ""
+const falsyValues = 0;
+
+if (falsyValues) {
+    console.log()
+}
