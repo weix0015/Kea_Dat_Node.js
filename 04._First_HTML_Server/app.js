@@ -9,6 +9,7 @@ app.get("/", (req, res) => {
 
 // assignment: Create a new route called with the endpoint publicsquare that serves publicSquare.html
 app.get("/publicSquare", (req, res) => {
+  console.log("Entering the public square");
     res.sendFile(__dirname + "/public/publicSquare/publicSquare.html");
 });
 
@@ -16,14 +17,19 @@ app.get("/publicSquare", (req, res) => {
 // task otherwise say, "hello stranger"
 
 
-const knownName = "Wei"
+const knownNames = ["Wei", "Mikkel"];
 
 app.get("/greeting", (req, res) => {
-  if (req.query.name === knownName) {
-    res.send({ data: `Hello ${knownName}` })
+  const providedName = req.params.name;
+  if (knownNames.includes(providedName)) {
+    res.send({ data: `Hello ${providedName}` })
   } else {
     res.send({ data: "Hello stranger!" })
   }
+});
+
+app.get("/knownpeople", (req, res) => {
+  res.send({ data: knownNames.length });
 });
 
 /*

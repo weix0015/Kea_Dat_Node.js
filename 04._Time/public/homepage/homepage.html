@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: aqua;
+      padding: 50px;
+    }
+
+    table {
+      border-collapse:separate;
+    }
+
+    td, th {
+      border: 1px solid black;
+      padding: 8px;
+    }
+
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+  </style>
+  <title>Homepage</title>
+</head>
+<body>
+  <table id="table" style="width: 100%;">
+    <tr>
+      <th>Continent</th>
+      <th>Country</th>
+      <th>Time</th>
+    </tr>
+    <tr>
+      <td>Europe</td>
+      <td>Denmark</td>
+      <td id="denmark-time"></td>
+    </tr>
+    <tr>
+      <td>Europe</td>
+      <td>UK</td>
+      <td id="uk-time"></td>
+    </tr>
+    <tr>
+      <td>North American</td>
+      <td>Los Angeles</td>
+      <td id="los-angeles-time"></td>
+    </tr>
+    <tr>
+      <td>Asia</td>
+      <td>Japan</td>
+      <td id="japan-time"></td>
+    </tr>
+  </table>
+  <script>
+    
+    function updateTime() {
+      // current time in each location
+      let denmarkTime = new Date().toLocaleString("en-US", {timeZone: "Europe/Copenhagen"});
+      let ukTime = new Date().toLocaleString("en-US", {timeZone: "Europe/London"});
+      let losAngelesTime = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+      let japanTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Tokyo"});
+
+      // update time in table
+      document.getElementById("denmark-time").textContent = denmarkTime;
+      document.getElementById("uk-time").textContent = ukTime;
+      document.getElementById("los-angeles-time").textContent = losAngelesTime;
+      document.getElementById("japan-time").textContent = japanTime;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+
+  </script>
+</body>
+</html>
