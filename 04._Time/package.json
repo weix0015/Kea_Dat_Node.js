@@ -4,6 +4,7 @@
   "description": "Working with timezone in javascript",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "no test"
   },
   "keywords": [
