@@ -5,71 +5,156 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background-color: aqua;
-      padding: 50px;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     table {
-      border-collapse:separate;
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
     }
 
-    td, th {
-      border: 1px solid black;
-      padding: 8px;
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
     }
 
     th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
       background-color: #04AA6D;
       color: white;
+      font-weight: bold;
     }
 
     tr:hover {
-      background-color: #ddd;
+      background-color: #f2f2f2;
+    }
+
+    .converter-container {
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .converter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      padding: 8px 16px;
+      background-color: #04AA6D;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #037d52;
+    }
+
+    .result-container {
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .result {
+      font-size: 18px;
     }
   </style>
-  <title>Homepage</title>
+  <title>Time Zones</title>
 </head>
 <body>
-  <table id="table" style="width: 100%;">
-    <tr>
-      <th>Continent</th>
-      <th>Country</th>
-      <th>Time</th>
-    </tr>
-    <tr>
-      <td>Europe</td>
-      <td>Denmark</td>
-      <td id="denmark-time"></td>
-    </tr>
-    <tr>
-      <td>Europe</td>
-      <td>UK</td>
-      <td id="uk-time"></td>
-    </tr>
-    <tr>
-      <td>North American</td>
-      <td>Los Angeles</td>
-      <td id="los-angeles-time"></td>
-    </tr>
-    <tr>
-      <td>Asia</td>
-      <td>Japan</td>
-      <td id="japan-time"></td>
-    </tr>
-  </table>
+  <div class="container">
+    <table id="table">
+      <thead>
+        <tr>
+          <th>Continent</th>
+          <th>Country</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Europe</td>
+          <td>Denmark</td>
+          <td id="denmark-time"></td>
+        </tr>
+        <tr>
+          <td>Europe</td>
+          <td>UK</td>
+          <td id="uk-time"></td>
+        </tr>
+        <tr>
+          <td>North America</td>
+          <td>Los Angeles</td>
+          <td id="los-angeles-time"></td>
+        </tr>
+        <tr>
+          <td>Asia</td>
+          <td>Japan</td>
+          <td id="japan-time"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="converter-container">
+      <div class="converter">
+        <select id="fromCountry">
+          <option value="Europe/Copenhagen">Denmark</option>
+          <option value="Europe/London">UK</option>
+          <option value="America/Los_Angeles">Los Angeles</option>
+          <option value="Asia/Tokyo">Japan</option>
+        </select>
+        <span>To</span>
+        <select id="toCountry">
+          <option value="Europe/Copenhagen">Denmark</option>
+          <option value="Europe/London">UK</option>
+          <option value="America/Los_Angeles">Los Angeles</option>
+          <option value="Asia/Tokyo">Japan</option>
+        </select>
+        <button id="calculateBtn">Calculate</button>
+      </div>
+
+      <div class="result-container">
+        <div class="result" id="timeDifference"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    
     function updateTime() {
-      // current time in each location
       let denmarkTime = new Date().toLocaleString("en-US", {timeZone: "Europe/Copenhagen"});
       let ukTime = new Date().toLocaleString("en-US", {timeZone: "Europe/London"});
       let losAngelesTime = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
       let japanTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Tokyo"});
 
-      // update time in table
       document.getElementById("denmark-time").textContent = denmarkTime;
       document.getElementById("uk-time").textContent = ukTime;
       document.getElementById("los-angeles-time").textContent = losAngelesTime;
@@ -79,6 +164,24 @@
     updateTime();
     setInterval(updateTime, 1000);
 
+    document.getElementById("calculateBtn").addEventListener("click", function() {
+      const fromCountry = document.getElementById("fromCountry").value;
+      const toCountry = document.getElementById("toCountry").value;
+
+      const fromTime = new Date().toLocaleString("en-US", {timeZone: fromCountry});
+      const toTime = new Date().toLocaleString("en-US", {timeZone: toCountry});
+      const fromDateTime = new Date(fromTime);
+      const toDateTime = new Date(toTime);
+      
+      // Convert milliseconds to hours (36e5 = miliseconds to hours)
+      // miliseconds per hour 
+      // = 60 seconds (in 1 minute) * 60 minutes (in 1 hour) * 1000 miliseconds (in 1 second)
+      // 3600000
+      const timeDifference = Math.abs(toDateTime - fromDateTime) / 36e5; 
+
+      document.getElementById("timeDifference").textContent = `The time difference between 
+      ${fromCountry} and ${toCountry} is approximately ${timeDifference} hours.`;
+    });
   </script>
 </body>
 </html>
