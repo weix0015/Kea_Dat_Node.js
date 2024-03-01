@@ -4,6 +4,12 @@ const app = express();
 
 app.use(express.static("public"));
 
+// const helicopterFactoryFile = require("./util/helicopterFactory.js");
+// console.log(helicopterFactoryFile.helicopterFactory());
+
+const  { helicopterFactory } = require("./util/helicopterFactory.js");
+console.log(helicopterFactory());
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/homepage/homepage.html");
 });
@@ -45,6 +51,20 @@ app.get("/greeting/:name", (req, res) => {
   }
 });
 */
+
+app.get("/proxy", (req, res) => {
+  // fetch("https://www.google.com")
+  // .then((response) => response.text())
+  // .then((result) => res.send(result));
+  fetch("https://www.google.com")
+  .then((response) => response.arrayBuffer())
+  .then(buffer => {
+    const decoder = new TextDecoder("iso-8859-1");
+    const text = decoder.decode(buffer);
+    res.send(text);
+  });
+  /* assignment: Request the https://www.google.com home page and serve it as a response */
+});
 
 
 const PORT = 8080;
