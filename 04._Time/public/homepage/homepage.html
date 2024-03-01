@@ -174,7 +174,7 @@
       const toDateTime = new Date(toTime);
       
       // Convert milliseconds to hours (36e5 = miliseconds to hours)
-      // miliseconds per hour 
+      // miliseconds per hour
       // = 60 seconds (in 1 minute) * 60 minutes (in 1 hour) * 1000 miliseconds (in 1 second)
       // 3600000
       const timeDifference = Math.abs(toDateTime - fromDateTime) / 36e5;
