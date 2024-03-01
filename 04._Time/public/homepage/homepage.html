@@ -177,7 +177,7 @@
       // miliseconds per hour 
       // = 60 seconds (in 1 minute) * 60 minutes (in 1 hour) * 1000 miliseconds (in 1 second)
       // 3600000
-      const timeDifference = Math.abs(toDateTime - fromDateTime) / 36e5; 
+      const timeDifference = Math.abs(toDateTime - fromDateTime) / 36e5;
 
       document.getElementById("timeDifference").textContent = `The time difference between 
       ${fromCountry} and ${toCountry} is approximately ${timeDifference} hours.`;
