@@ -4,25 +4,31 @@ const app = express();
 
 app.use(express.static("public"));
 
-import path from "path";
-
 import getMatches from "./util/matches.js";
+
+import { homepagePage, matchesPage, contactPage } from "./util/readPages.js";
+
+
 
 // ======= HTML =============
 
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("public/pages/homepage/homepage.html"));
+  res.send(homepagePage);
 });
 
 app.get("/matches", (req, res) => {
-  res.sendFile(path.resolve("public/pages/matches/matches.html"));
+  res.send(matchesPage);
 });
 
 // assignment create a contact page
 
 app.get("/contact", (req, res) => {
-  res.sendFile(path.resolve("public/pages/contact/contact.html"));
-})
+  res.send(contactPage);
+});
+
+app.get("/page", (req, res) => {
+  res.send("<div><h1>hello</h1><h2>hello</h2></div>");
+});
 
 // ======= API =============
 
