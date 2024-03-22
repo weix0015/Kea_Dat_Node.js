@@ -1,41 +1,20 @@
-import express from "express"
+import express from "express";
 
 const app = express();
 
 app.use(express.static("public"));
 
-import getMatches from "./util/matches.js";
-
-import { homepagePage, matchesPage, contactPage } from "./util/readPages.js";
+app.use(express.urlencoded({ extended: true }));
 
 
+import matchesRouter from "./routers/matchesRouter.js";
+app.use(matchesRouter);
+import pagesRouter from "./routers/pagesRouter.js";
+app.use(pagesRouter);
+import contactRouter from "./routers/contactRouter.js";
+app.use(contactRouter);
 
-// ======= HTML =============
 
-app.get("/", (req, res) => {
-  res.send(homepagePage);
-});
-
-app.get("/matches", (req, res) => {
-  res.send(matchesPage);
-});
-
-// assignment create a contact page
-
-app.get("/contact", (req, res) => {
-  res.send(contactPage);
-});
-
-app.get("/page", (req, res) => {
-  res.send("<div><h1>hello</h1><h2>hello</h2></div>");
-});
-
-// ======= API =============
-
-app.get("/api/matches", async (req, res) => {
-  const matches = await getMatches();
-  res.send({ data: matches });
-});
 
 const PORT = 8080;
 app.listen(PORT, () => console.log("Server is running on port ", PORT));
