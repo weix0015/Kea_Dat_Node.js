@@ -2,6 +2,8 @@
   export let parentName;
   export let myChildren;
 
+  import { fridgeMessages } from "../../stores/fridgeMessageStore";
+
   import Child from "../Child/Child.svelte";
 
   function handleShowLove(childName) {
@@ -15,14 +17,17 @@
     treasureChest = treasureChest;
   }
 
-  // assignment: Create a treasure chest full of items (emoji)
-  // each parent has a treasure chest and the children can take one item at a time
-  // remember to follow the conventions of handle* and on*
-  // display the treausre chest items in the parent component
+  function wipeFridge() {
+    fridgeMessages.set([{ message: "Svelte Family Fridge" }]);
+  }
+
+  // assignment give parents the power to wipe the fridge
 
 </script>
 
 <h1>{parentName}</h1>
+
+<button on:click={wipeFridge}>Wipe the fridge</button>
 
 <p>
 {#each treasureChest as treasure}
