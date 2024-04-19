@@ -19,6 +19,6 @@
   }
 </script>
 
-<h1>Sunglasses Shop</h1>
+<h1>Sunglasses Shop!!!!</h1>
 
 <button on:click={completeCheckout}>Checkout</button>
